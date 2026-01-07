@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Crew - High School Programming Club</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-green': '#00ff41',
+                        'electric-blue': '#00d4ff',
+                        'dark-bg': '#0a0a0a',
+                        'dark-card': '#1a1a1a',
+                        'dark-border': '#2a2a2a'
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #00ff41, 0 0 10px #00ff41' },
+                            '100%': { boxShadow: '0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 30px #00ff41' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #00ff41, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .neon-border {
+            border: 1px solid #00ff41;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.8);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-white scroll-smooth">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-dark-bg/95 backdrop-blur-sm border-b border-dark-border">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="text-2xl font-bold gradient-text">Coding Crew</div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#home" class="hover:text-neon-green transition-colors">Home</a>
+                        <a href="#events" class="hover:text-neon-green transition-colors">Events</a>
+                        <a href="#learn" class="hover:text-neon-green transition-colors">Learn</a>
+                        <a href="#leaderboard" class="hover:text-neon-green transition-colors">Leaderboard</a>
+                        <a href="#about" class="hover:text-neon-green transition-colors">About</a>
+                        <a href="#donate" class="hover:text-neon-green transition-colors">Donate</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:text-neon-green transition-colors">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="md:hidden p-2" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-dark-card border-t border-dark-border" id="mobile-menu">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#home" class="block py-2 hover:text-neon-green transition-colors">Home</a>
+                <a href="#events" class="block py-2 hover:text-neon-green transition-colors">Events</a>
+                <a href="#learn" class="block py-2 hover:text-neon-green transition-colors">Learn</a>
+                <a href="#leaderboard" class="block py-2 hover:text-neon-green transition-colors">Leaderboard</a>
+                <a href="#about" class="block py-2 hover:text-neon-green transition-colors">About</a>
+                <a href="#donate" class="block py-2 hover:text-neon-green transition-colors">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-card to-dark-bg opacity-50"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text animate-pulse-slow">
+                Welcome to Coding Crew
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                A grand total of 544 lines of HTML, 217 lines of JavaScript, and 299 lines of Tailwind CSS (70% AI made as a disclosure)
+            </p>
+            <button class="bg-neon-green text-dark-bg px-8 py-4 rounded-lg font-bold text-lg hover-glow transition-all duration-300 animate-glow">
+                <i class="fas fa-users mr-2"></i>Join Our Remind Group
+            </button>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl text-neon-green"></i>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section id="events" class="py-20 bg-dark-card">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Upcoming Events</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Event Card 1 -->
+                <div class="bg-dark-bg border border-dark-border rounded-lg p-6 hover-glow transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-neon-green text-2xl mr-3"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">Hackathon</h3>
+                            <p class="text-gray-400">Generic Competition</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">Test your skills in our coding competition</p>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-sm text-gray-400"><i class="fas fa-calendar mr-2"></i>March 16, 2026</span>
+                        <span class="text-sm text-gray-400"><i class="fas fa-clock mr-2"></i>8:00 AM</span>
+                    </div>
+                    <button class="w-full bg-neon-green/20 text-neon-green py-2 rounded hover:bg-neon-green/30 transition-colors" onclick="showRules()">
+                        View Rules
+                    </button>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="bg-dark-bg border border-dark-border rounded-lg p-6 hover-glow transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-users text-electric-blue text-2xl mr-3"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">Weekly Meeting</h3>
+                            <p class="text-gray-400">Club Gathering</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">Join us for coding challenges and team discussions</p>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-sm text-gray-400"><i class="fas fa-calendar mr-2"></i>Jan 8, 2026</span>
+                        <span class="text-sm text-gray-400"><i class="fas fa-clock mr-2"></i>10:30 AM</span>
+                    </div>
+                    <button class="w-full bg-electric-blue/20 text-electric-blue py-2 rounded hover:bg-electric-blue/30 transition-colors">
+                        Join the Flex!
+                    </button>
+                </div>
+
+                <!-- Event Card 3 -->
+                <div class="bg-dark-bg border border-dark-border rounded-lg p-6 hover-glow transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-robot text-neon-green text-2xl mr-3"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">Tanay's Birthday</h3>
+                            <p class="text-gray-400">2 events make the UI look bad</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">W Tanay</p>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-sm text-gray-400"><i class="fas fa-calendar mr-2"></i>Dec 18, 2026</span>
+                        <span class="text-sm text-gray-400"><i class="fas fa-clock mr-2"></i>12:00 AM</span>
+                    </div>
+                    <button class="w-full bg-neon-green/20 text-neon-green py-2 rounded hover:bg-neon-green/30 transition-colors">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Hub -->
+    <section id="learn" class="py-20 bg-dark-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Learning Hub</h2>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-bold mb-6 text-neon-green">Video Courses</h3>
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <!-- Course Card 1 -->
+                        <div class="bg-dark-card border border-dark-border rounded-lg p-6 hover-glow transition-all duration-300">
+                            <div class="text-3xl mb-4">☕</div>
+                            <h4 class="text-xl font-bold mb-2">Introduction to Java</h4>
+                            <p class="text-gray-400 mb-4">Learn the fundamentals of Java programming</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">12 lessons</span>
+                                <button class="text-neon-green hover:text-electric-blue transition-colors">
+                                    Start <i class="fas fa-arrow-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Course Card 2 -->
+                        <div class="bg-dark-card border border-dark-border rounded-lg p-6 hover-glow transition-all duration-300">
+                            <div class="text-3xl mb-4">🐍</div>
+                            <h4 class="text-xl font-bold mb-2">Python Basics</h4>
+                            <p class="text-gray-400 mb-4">Python is objectivley the besrt language for competition (But HTML5 is GOATED)</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">15 lessons</span>
+                                <button class="text-neon-green hover:text-electric-blue transition-colors">
+                                    Start <i class="fas fa-arrow-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Course Card 3 -->
+                        <div class="bg-dark-card border border-dark-border rounded-lg p-6 hover-glow transition-all duration-300">
+                            <div class="text-3xl mb-4">⚡</div>
+                            <h4 class="text-xl font-bold mb-2">C++ Programming</h4>
+                            <p class="text-gray-400 mb-4">High-performance programming with C++</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">18 lessons</span>
+                                <button class="text-neon-green hover:text-electric-blue transition-colors">
+                                    Start <i class="fas fa-arrow-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Course Card 4 -->
+                        <div class="bg-dark-card border border-dark-border rounded-lg p-6 hover-glow transition-all duration-300">
+                            <div class="text-3xl mb-4">🤖</div>
+                            <h4 class="text-xl font-bold mb-2">AI Prompt Engineering</h4>
+                            <p class="text-gray-400 mb-4">Learn to communicate effectively with AI</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">8 lessons</span>
+                                <button class="text-neon-green hover:text-electric-blue transition-colors">
+                                    Start <i class="fas fa-arrow-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Solutions Archive -->
+                    <h3 class="text-2xl font-bold mb-6 text-electric-blue">Solutions Archive</h3>
+                    <div class="bg-dark-card border border-dark-border rounded-lg p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-dark-bg rounded hover-glow transition-all duration-300">
+                                <div>
+                                    <h4 class="font-bold">Code Quest #4 - Array Manipulation</h4>
+                                    <p class="text-sm text-gray-400">Difficulty: Medium</p>
+                                </div>
+                                <button class="text-electric-blue hover:text-neon-green transition-colors">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-dark-bg rounded hover-glow transition-all duration-300">
+                                <div>
+                                    <h4 class="font-bold">Code Quest #3 - String Algorithms</h4>
+                                    <p class="text-sm text-gray-400">Difficulty: Easy</p>
+                                </div>
+                                <button class="text-electric-blue hover:text-neon-green transition-colors">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-dark-bg rounded hover-glow transition-all duration-300">
+                                <div>
+                                    <h4 class="font-bold">Code Quest #2 - Dynamic Programming</h4>
+                                    <p class="text-sm text-gray-400">Difficulty: Hard</p>
+                                </div>
+                                <button class="text-electric-blue hover:text-neon-green transition-colors">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-2xl font-bold mb-6 text-neon-green">Quick Links</h3>
+                    <div class="bg-dark-card border border-dark-border rounded-lg p-6">
+                        <div class="space-y-4">
+                            <a href="https://scratch.mit.edu" target="_blank" class="flex items-center p-3 bg-dark-bg rounded hover-glow transition-all duration-300 group">
+                                <i class="fas fa-cat text-orange-500 text-xl mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold group-hover:text-neon-green transition-colors">Scratch</h4>
+                                    <p class="text-sm text-gray-400">Visual programming</p>
+                                </div>
+                            </a>
+                            <a href="https://www.w3schools.com" target="_blank" class="flex items-center p-3 bg-dark-bg rounded hover-glow transition-all duration-300 group">
+                                <i class="fas fa-code text-green-500 text-xl mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold group-hover:text-neon-green transition-colors">W3Schools</h4>
+                                    <p class="text-sm text-gray-400">Web development tutorials</p>
+                                </div>
+                            </a>
+                            <a href="https://cs50.harvard.edu" target="_blank" class="flex items-center p-3 bg-dark-bg rounded hover-glow transition-all duration-300 group">
+                                <i class="fas fa-graduation-cap text-red-500 text-xl mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold group-hover:text-neon-green transition-colors">CS50</h4>
+                                    <p class="text-sm text-gray-400">Harvard's computer science course</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section id="leaderboard" class="py-20 bg-dark-card">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Leaderboard</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-dark-bg border border-dark-border rounded-lg overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-neon-green/10 border-b border-dark-border">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-neon-green">Rank</th>
+                                    <th class="px-6 py-4 text-left text-neon-green">Name</th>
+                                    <th class="px-6 py-4 text-left text-neon-green">Points</th>
+                                    <th class="px-6 py-4 text-left text-neon-green">Events Won</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-dark-border hover:bg-dark-card/50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <span class="text-yellow-500 font-bold">🥇 1</span>
+                                    </td>
+                                    <td class="px-6 py-4 font-medium">Ben</td>
+                                    <td class="px-6 py-4 text-neon-green font-bold">6749</td>
+                                    <td class="px-6 py-4">5</td>
+                                </tr>
+                                <tr class="border-b border-dark-border hover:bg-dark-card/50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <span class="text-gray-400 font-bold">🥈 2</span>
+                                    </td>
+                                    <td class="px-6 py-4 font-medium">Tynan</td>
+                                    <td class="px-6 py-4 text-electric-blue font-bold">2,200</td>
+                                    <td class="px-6 py-4">4</td>
+                                </tr>
+                                <tr class="border-b border-dark-border hover:bg-dark-card/50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <span class="text-orange-600 font-bold">🥉 3</span>
+                                    </td>
+                                    <td class="px-6 py-4 font-medium">John Smith</td>
+                                    <td class="px-6 py-4 text-orange-500 font-bold">1,950</td>
+                                    <td class="px-6 py-4">3</td>
+                                </tr>
+                                <tr class="border-b border-dark-border hover:bg-dark-card/50 transition-colors">
+                                    <td class="px-6 py-4 text-gray-400">4</td>
+                                    <td class="px-6 py-4 font-medium">Tanay Parripati</td>
+                                    <td class="px-6 py-4">1,800</td>
+                                    <td class="px-6 py-4">2</td>
+                                </tr>
+                                <tr class="border-b border-dark-border hover:bg-dark-card/50 transition-colors">
+                                    <td class="px-6 py-4 text-gray-400">5</td>
+                                    <td class="px-6 py-4 font-medium">Ishanansh Guleria</td>
+                                    <td class="px-6 py-4">1,650</td>
+                                    <td class="px-6 py-4">2</td>
+                                </tr>
+                                <tr class="hover:bg-dark-card/50 transition-colors">
+                                    <td class="px-6 py-4 text-gray-400">6</td>
+                                    <td class="px-6 py-4 font-medium">Advay</td>
+                                    <td class="px-6 py-4">1,500</td>
+                                    <td class="px-6 py-4">1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Team -->
+    <section id="about" class="py-20 bg-dark-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">About & Team</h2>
+            
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="bg-dark-card border border-dark-border rounded-lg p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-neon-green">What We Do</h3>
+                    <p class="text-gray-300 mb-6">
+                        Coding Crew is a vibrant community of high school students passionate about programming and technology. 
+                        We organize weekly coding challenges, hackathons, and workshops to help members develop their skills 
+                        and prepare for careers in tech. (Top 10 AI use right here)
+                    </p>
+                    <p class="text-gray-300">
+                        Our mission is to make programming accessible and exciting for everyone, regardless of their experience level. 
+                        From beginners learning their first language to advanced coders tackling complex algorithms, there's a place 
+                        for everyone in Coding Crew.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-8 text-center text-electric-blue">Meet Our Team</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <!-- Team Member 1 -->
+                <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover-glow transition-all duration-300">
+                    <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-neon-green to-electric-blue rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-3xl text-dark-bg"></i>
+                    </div>
+                    <h4 class="font-bold mb-1">Tynan</h4>
+                    <p class="text-sm text-gray-400 mb-2">Club President</p>
+                    <p class="text-xs text-gray-500">"Leader"</p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover-glow transition-all duration-300">
+                    <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-electric-blue to-neon-green rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-3xl text-dark-bg"></i>
+                    </div>
+                    <h4 class="font-bold mb-1">Tanay</h4>
+                    <p class="text-sm text-gray-400 mb-2">Member that made ts</p>
+                    <p class="text-xs text-gray-500">"W Tanay"</p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover-glow transition-all duration-300">
+                    <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-electric-blue rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-3xl text-dark-bg"></i>
+                    </div>
+                    <h4 class="font-bold mb-1">Ian Lundell</h4>
+                    <p class="text-sm text-gray-400 mb-2">Member</p>
+                    <p class="text-xs text-gray-500">"W Curls"</p>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover-glow transition-all duration-300">
+                    <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-orange-500 to-neon-green rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-3xl text-dark-bg"></i>
+                    </div>
+                    <h4 class="font-bold mb-1">John Smith</h4>
+                    <p class="text-sm text-gray-400 mb-2">Member</p>
+                    <p class="text-xs text-gray-500">"W dude"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="donate" class="bg-dark-card border-t border-dark-border py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-neon-green">Contact Us</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <p><i class="fas fa-envelope mr-2"></i>codingcrew@ojrsd.net</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Mr. Fritz Room, Owen J Roberts High School</p>
+                        <p><i class="fas fa-clock mr-2"></i>Meetings: Tuesdays and Thursdays during Flex</p>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-electric-blue">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="#home" class="block text-gray-400 hover:text-neon-green transition-colors">Home</a>
+                        <a href="#events" class="block text-gray-400 hover:text-neon-green transition-colors">Events</a>
+                        <a href="#learn" class="block text-gray-400 hover:text-neon-green transition-colors">Learn</a>
+                        <a href="#leaderboard" class="block text-gray-400 hover:text-neon-green transition-colors">Leaderboard</a>
+                    </div>
+                </div>
+
+                <!-- Social & Donate -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-neon-green">Support Us</h3>
+                    <button class="w-full bg-neon-green text-dark-bg py-3 px-6 rounded-lg font-bold hover-glow transition-all duration-300 mb-4">
+                        <i class="fas fa-heart mr-2"></i>Donate Now
+                    </button>
+                    <div class="flex space-x-4 justify-center">
+                        <a href="#" class="text-gray-400 hover:text-neon-green transition-colors">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">
+                            <i class="fab fa-discord text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-neon-green transition-colors">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-dark-border pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Coding Crew. All rights reserved. | This took longer than I thought ☕</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Rules Modal -->
+    <div id="rulesModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-dark-card border border-neon-green rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold gradient-text">Code Quest Rules</h3>
+                    <button onclick="closeRules()" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4 text-gray-300">
+                    <div>
+                        <h4 class="font-bold text-neon-green mb-2">General Rules</h4>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Team participation is encouraged</li>
+                            <li>Some time limit</li>
+                            <li>Python, C+++, and Java allowed</li>
+                            <li>No external help or collaboration</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-electric-blue mb-2">Scoring System</h4>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Easy problems: 10 points</li>
+                            <li>Medium problems: 20 points</li>
+                            <li>Hard problems: 30 points</li>
+                            <li>Bonus points for better submissions</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-neon-green mb-2">Submission Guidelines</h4>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Code must compile and run</li>
+                            <li>Inlcude all edge cases</li>
+                            <li>Submit through the official platform</li>
+                            <li>Late submissions don't count</li>
+                        </ul>
+                    </div>
+                </div>
+                <button onclick="closeRules()" class="mt-6 w-full bg-neon-green text-dark-bg py-2 rounded font-bold hover-glow transition-all duration-300">
+                    Got it!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
